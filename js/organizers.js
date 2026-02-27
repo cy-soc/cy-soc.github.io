@@ -1,5 +1,8 @@
 fetch("data/organizers.json")
-  .then((res) => res.json())
+  .then((res) => {
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return res.json();
+  })
   .then((organizers) => {
     const list = document.getElementById("organizers-list");
 
@@ -7,29 +10,56 @@ fetch("data/organizers.json")
       const li = document.createElement("li");
 
       // Name (linked if website exists)
-      const name = o.website
-        ? `<a href="${o.website}" target="_blank" rel="noopener"><strong>${o.name}</strong></a>`
-        : `<strong>${o.name}</strong>`;
+      const nameEl = document.createElement("strong");
+      nameEl.textContent = o.name;
+
+      if (o.website) {
+        const link = document.createElement("a");
+        link.href = o.website;
+        link.target = "_blank";
+        link.rel = "noopener";
+        link.appendChild(nameEl);
+        li.appendChild(link);
+      } else {
+        li.appendChild(nameEl);
+      }
+
+      li.append(` \u2014 ${o.affiliation} `);
 
       // Social icons
-      const icons = [];
-      if (o.x) {
-        icons.push(
-          `<a href="${o.x}" target="_blank" rel="noopener" class="social-link" title="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>`
-        );
-      }
-      if (o.bluesky) {
-        icons.push(
-          `<a href="${o.bluesky}" target="_blank" rel="noopener" class="social-link" title="Bluesky"><i class="fa-brands fa-bluesky"></i></a>`
-        );
-      }
-      if (o.google_scholar) {
-        icons.push(
-          `<a href="${o.google_scholar}" target="_blank" rel="noopener" class="social-link" title="Google Scholar"><i class="fa-brands fa-google-scholar"></i></a>`
-        );
-      }
+      const socials = [
+        { url: o.x, icon: "fa-x-twitter", label: "X / Twitter" },
+        { url: o.bluesky, icon: "fa-bluesky", label: "Bluesky" },
+        { url: o.google_scholar, icon: "fa-google-scholar", label: "Google Scholar" },
+      ];
 
-      li.innerHTML = `${name} &mdash; ${o.affiliation} ${icons.join(" ")}`;
+      socials.forEach((s) => {
+        if (!s.url) return;
+        const a = document.createElement("a");
+        a.href = s.url;
+        a.target = "_blank";
+        a.rel = "noopener";
+        a.className = "social-link";
+        a.title = s.label;
+
+        const icon = document.createElement("i");
+        icon.className = `fa-brands ${s.icon}`;
+        icon.setAttribute("aria-hidden", "true");
+        a.appendChild(icon);
+
+        const srText = document.createElement("span");
+        srText.className = "visually-hidden";
+        srText.textContent = s.label;
+        a.appendChild(srText);
+
+        li.appendChild(a);
+      });
+
       list.appendChild(li);
     });
+  })
+  .catch((err) => {
+    console.error("Failed to load organizers:", err);
+    const list = document.getElementById("organizers-list");
+    list.innerHTML = "<li>Unable to load organizers.</li>";
   });

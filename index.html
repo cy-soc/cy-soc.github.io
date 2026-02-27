@@ -15,7 +15,9 @@
   <nav class="navbar navbar-expand-sm navbar-light bg-white fixed-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="#">CySoc</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <button class="navbar-toggler" type="button"
+              data-bs-toggle="collapse" data-bs-target="#navbarNav"
+              aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarNav">
@@ -31,7 +33,7 @@
   <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <h1>International Workshop on Cyber Social Threats</h1>
+      <h1>International Workshop on <span class="highlight">Cy</span>ber <span class="highlight">Soc</span>ial Threats</h1>
       <p>Advancing research on online harms, misinformation, and coordinated manipulation.</p>
     </div>
   </header>
@@ -41,10 +43,11 @@
     <div class="content-narrow">
       <h2>About</h2>
       <p>
-        The CySoc workshop brings together researchers studying cyber social threats — the
-        misuse of online platforms to spread misinformation, hate speech, harassment, and
-        coordinated manipulation. Our goal is to foster interdisciplinary dialogue and
-        develop methods for understanding and mitigating these harms.
+        The International Workshop on Cyber Social Threats (CySoc) brings together
+        researchers studying the misuse of online platforms to spread misinformation, hate
+        speech, harassment, and coordinated manipulation. Our goal is to foster
+        interdisciplinary dialogue and develop methods for understanding and mitigating
+        these harms.
       </p>
       <p>
         Topics span computational social science, natural language processing, network
@@ -59,43 +62,37 @@
   <section id="editions" class="bg-alt">
     <div class="content-narrow">
       <h2>Editions</h2>
-      <div class="table-responsive">
-        <table class="table table-hover">
-          <thead>
-            <tr>
-              <th>Year</th>
-              <th>Conference</th>
-              <th>Location</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><a href="https://cy-soc.github.io/2026/">2026</a></td>
-              <td>ICWSM 2026</td>
-              <td>Los Angeles, CA, USA</td>
-            </tr>
-            <tr>
-              <td><a href="https://cy-soc.github.io/2025/">2025</a></td>
-              <td>ICWSM 2025</td>
-              <td>Copenhagen, Denmark</td>
-            </tr>
-            <tr>
-              <td><a href="https://cy-soc.github.io/2024/">2024</a></td>
-              <td>ICWSM 2024</td>
-              <td>Buffalo, NY, USA</td>
-            </tr>
-            <tr>
-              <td><a href="https://cy-soc.github.io/2023/">2023</a></td>
-              <td>ACM Web Conference 2023</td>
-              <td>Austin, TX, USA</td>
-            </tr>
-            <tr>
-              <td><a href="https://cysoc2022.github.io/">2022</a></td>
-              <td>ICWSM 2022</td>
-              <td>Atlanta, GA, USA</td>
-            </tr>
-          </tbody>
-        </table>
+      <div class="editions-header" role="row">
+        <span role="columnheader">Year</span>
+        <span role="columnheader">Conference</span>
+        <span role="columnheader">Location</span>
+      </div>
+      <div class="editions-list" role="table" aria-label="Workshop editions">
+        <a href="https://cy-soc.github.io/2026/" class="edition-row" role="row" target="_blank" rel="noopener">
+          <span role="cell">2026</span>
+          <span role="cell">ICWSM 2026</span>
+          <span role="cell">Los Angeles, CA, USA</span>
+        </a>
+        <a href="https://cy-soc.github.io/2025/" class="edition-row" role="row" target="_blank" rel="noopener">
+          <span role="cell">2025</span>
+          <span role="cell">ICWSM 2025</span>
+          <span role="cell">Copenhagen, Denmark</span>
+        </a>
+        <a href="https://cy-soc.github.io/2024/" class="edition-row" role="row" target="_blank" rel="noopener">
+          <span role="cell">2024</span>
+          <span role="cell">ICWSM 2024</span>
+          <span role="cell">Buffalo, NY, USA</span>
+        </a>
+        <a href="https://cy-soc.github.io/2023/" class="edition-row" role="row" target="_blank" rel="noopener">
+          <span role="cell">2023</span>
+          <span role="cell">ACM Web Conference 2023</span>
+          <span role="cell">Austin, TX, USA</span>
+        </a>
+        <a href="https://cysoc2022.github.io/" class="edition-row" role="row" target="_blank" rel="noopener">
+          <span role="cell">2022</span>
+          <span role="cell">ICWSM 2022</span>
+          <span role="cell">Atlanta, GA, USA</span>
+        </a>
       </div>
     </div>
   </section>
